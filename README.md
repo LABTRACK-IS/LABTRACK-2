@@ -1,92 +1,37 @@
 ﻿# LabTrack v2 - Refined Build
 
-Second iteration build of the LabTrack system. Imported from `C:\360TSDownloads\labtrack 2` on **2026-11-18 08:03:49**.
+Second iteration. Path: `C:\360TSDownloads\labtrack 2`. Generated: 2026-11-18 08:22:57
 
-This is **not a showcase** of the v1 baseline — it is the **updated snapshot** with fixes, refinements, and structural cleanup applied during this iteration.
-
----
-
-## What makes this build different from v1
-
-### Backend changes
-
-- **`.csproj` compile structure cleaned** — removed explicit `<Compile Include>` directives that were double-registering source files (`CS0101` fix).
-- **459 C# source files** (~34792 lines) across 29 controllers.
-- Controllers present: AiAssistant, Analytics, Asset, Audit, Auth, ChainOfCustody, Communication, Financial, IdempotencyRecords, InstructorCommunication, Laboratories, Maintenance, MaintenanceRecord, MaintenanceRecords, Network, NetworkIncident, NetworkInfo, Notification, PcUsage, ProblemReport, Qr, QrAdmin, QrSession, RepairTicket, Replacement, ReplacementRecord, Reservation, Users, Workstations
-- Stable SDK-style project layout (auto-include `.cs`) for clean future diffs.
-
-### Frontend changes
-
-- **73 TS/TSX files** (~26669 lines).
-- Vite + React 18 + TypeScript configuration verified (`tsc --noEmit` clean).
-- Same router structure as v1 — no breaking API contract changes.
+## 📋 [CHANGELOG.md](./CHANGELOG.md) - per-file changes vs v1
 
 ---
 
-## Diff vs v1 build (`C:\labtrack`)
+## Tech Stack
 
-Auto-computed delta from prior push:
+**Backend:** 29 controllers / 459 C# files
 
-**Backend files modified (32):**
+**Frontend:** 73 TS/TSX files
 
-- `backend\labtrack.csharp\src\labtrack.api\controllers\aiassistantcontroller.cs`
-- `backend\labtrack.csharp\src\labtrack.api\controllers\authcontroller.cs`
-- `backend\labtrack.csharp\src\labtrack.api\controllers\controllerservicebridgeextensions.cs`
-- `backend\labtrack.csharp\src\labtrack.api\controllers\pcusagecontroller.cs`
-- `backend\labtrack.csharp\src\labtrack.api\controllers\problemreportcontroller.cs`
-- `backend\labtrack.csharp\src\labtrack.api\extensions\corsextensions.cs`
-- `backend\labtrack.csharp\src\labtrack.api\extensions\jsonextensions.cs`
-- `backend\labtrack.csharp\src\labtrack.api\extensions\servicecollectionextensions.cs`
-- ... and 24 more
+## v2 Changes
 
-**Frontend files added (2):**
-
-- `frontend\src\components\common\labtrackaichatbot.tsx`
-- `frontend\src\new-feature.ts`
-
-**Frontend files modified (48):**
-
-- `frontend\src\api\apiclient.ts`
-- `frontend\src\api\client.ts`
-- `frontend\src\components\admin\aiassistantview.tsx`
-- `frontend\src\components\admin\analyticsreportsview.tsx`
-- `frontend\src\components\admin\assetsworkstationdeskview.tsx`
-- `frontend\src\components\admin\auditlogsview.tsx`
-- `frontend\src\components\admin\campuseslabsview.tsx`
-- `frontend\src\components\admin\financialreportsview.tsx`
-- ... and 40 more
-
-**Frontend files removed (4):**
-
-- `frontend\src\api\services.ts`
-- `frontend\src\components\common\airichmessagerenderer.tsx`
-- `frontend\src\components\common\sequentialtypewriterbanner.tsx`
-- `frontend\src\components\portal\youtubenotificationbell.tsx`
-
----
+- Backend : +14 / -6 / ~26
+- Frontend: +2 / -4 / ~45
+- `.csproj` compile cleanup (CS0101 fix)
+- Junk files removed
 
 ## Quick Start
 
-### Backend
-```bash
+**Backend:**
+```
 cd backend/LabTrack.CSharp/src/LabTrack.Api
 dotnet run
 ```
 
-### Frontend
-```bash
+**Frontend:**
+```
 cd frontend
 npm install
 npm run dev
 ```
 
-### URLs
-- Frontend: http://localhost:3000
-- Swagger : http://localhost:5000/swagger
-- Health  : http://localhost:5000/health/live
-
-## Build Status
-
-✅ Build succeeded
-
-Generated: 2026-11-18 08:03:49
+**URLs:** http://localhost:3000 · http://localhost:5000/swagger · http://localhost:5000/health/live

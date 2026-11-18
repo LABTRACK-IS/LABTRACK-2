@@ -51,3 +51,9 @@ tmp/
 # Examples keep
 !.env.example
 !appsettings.Example.json
+
+# Junk
+*.bak
+*.bak2
+*.bak-*
+cleanup-*.txt

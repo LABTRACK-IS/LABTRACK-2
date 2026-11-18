@@ -1,73 +1,49 @@
 ﻿## Purpose
 
-Second iteration (v2) of LabTrack, imported from `C:\360TSDownloads\labtrack 2`.
+Second iteration (v2) of LabTrack from `C:\360TSDownloads\labtrack 2`.
 
-This PR replaces the v1 baseline snapshot with the refined build. Focus: **stability, structural cleanup, and verified build/type health** — not feature showcase.
+## Change summary
 
----
+| Area | Added | Removed | Modified |
+|------|-------|---------|----------|
+| Backend | 14 | 6 | 26 |
+| Frontend | 2 | 4 | 45 |
 
-## Backend — what changed
+Detailed diff: [CHANGELOG.md](./CHANGELOG.md)
 
-- **Project file cleanup:** removed `<Compile Include>` directives in `.csproj` / `Directory.Build.props` that caused `CS0101` duplicate-definition errors in the v1 push.
-- **Current state:** 459 C# files (~34792 lines), 29 controllers registered.
-- **Controllers:** AiAssistant, Analytics, Asset, Audit, Auth, ChainOfCustody, Communication, Financial, IdempotencyRecords, InstructorCommunication, Laboratories, Maintenance, MaintenanceRecord, MaintenanceRecords, Network, NetworkIncident, NetworkInfo, Notification, PcUsage, ProblemReport, Qr, QrAdmin, QrSession, RepairTicket, Replacement, ReplacementRecord, Reservation, Users, Workstations
+## Backend top changes
 
-**Files modified vs v1:** 32
+- `backend/labtrack.python/app/api/routes/ai_chat.py` — **+608 / -1024**
+- `backend/labtrack.csharp/src/labtrack.api/controllers/authcontroller.cs` — **+2 / -301**
+- `backend/labtrack.csharp/src/labtrack.api/program.cs` — **+14 / -213**
+- `backend/labtrack.csharp/src/labtrack.api/services/problemreportservice.cs` — **+90 / -135**
+- `backend/labtrack.csharp/src/labtrack.api/controllers/aiassistantcontroller.cs` — **+41 / -120**
+- `backend/labtrack.csharp/src/labtrack.api/controllers/problemreportcontroller.cs` — **+93 / -41**
+- `backend/labtrack.python/app/db/vector_db.py` — **+22 / -75**
+- `backend/labtrack.python/app/services/telemetry_service.py` — **+22 / -75**
+- `backend/labtrack.python/app/api/routes/asset.py` — **+24 / -63**
+- `backend/labtrack.python/app/clients/llm_client.py` — **+31 / -46**
 
----
+## Frontend top changes
 
-## Frontend — what changed
+- `frontend/src/components/admin/maintenanceview.tsx` — **+408 / -3163**
+- `frontend/src/components/admin/analyticsreportsview.tsx` — **+455 / -2449**
+- `frontend/src/components/admin/useraccessmanagementview.tsx` — **+550 / -1820**
+- `frontend/src/components/admin/issueservicedeskview.tsx` — **+433 / -1838**
+- `frontend/src/components/instructor/notificationsview.tsx` — **+424 / -1844**
+- `frontend/src/components/instructor/labavailabilityview.tsx` — **+535 / -1581**
+- `frontend/src/components/instructor/studentsessionsview.tsx` — **+351 / -1651**
+- `frontend/src/components/instructor/overviewview.tsx` — **+543 / -1290**
+- `frontend/src/components/instructor/reservationsview.tsx` — **+446 / -1371**
+- `frontend/src/components/admin/inventorytransferview.tsx` — **+417 / -1365**
 
-- **Current state:** 73 TS/TSX files (~26669 lines).
-- TypeScript check: **clean** (no `error TS` lines).
-- Router and page structure stable; no breaking API integration changes in this pass.
+## QA checklist
 
-**Files added vs v1:** 2
+- [ ] dotnet build OK
+- [ ] tsc --noEmit = 0 errors
+- [ ] /health/live = 200
+- [ ] Swagger lists all controllers
+- [ ] EF migrations apply
+- [ ] No bin/obj/node_modules/.env tracked
 
-**Files modified vs v1:** 48
-
-**Files removed vs v1:** 4
-
----
-
-## Build & test status
-
-| Check | Result |
-|---|---|
-| `dotnet build` | ✅ Build succeeded |
-| `npx tsc --noEmit` | ✅ 0 errors |
-| `gh auth setup-git` | ✅ configured |
-
----
-
-## QA focus areas (different from v1 review)
-
-Unlike v1, this PR should be reviewed for **regressions and cleanup**, not just features:
-
-- [ ] No duplicate `.cs` definitions after `.csproj` cleanup (verify `CS0101` gone in CI)
-- [ ] EF Core migrations still apply cleanly
-- [ ] ``/swagger/v1/swagger.json`` lists exactly the expected controllers (no doubles)
-- [ ] Frontend build output identical structure to v1 (or intentional delta documented)
-- [ ] ``git ls-files`` shows no ``bin/``, ``obj/``, ``node_modules/``, or backup folders
-- [ ] Health checks still green: ``/health/live`` = 200
-- [ ] Diff vs v1 is intentional — reject if unrelated churn appears
-
----
-
-## How to verify
-
-```bash
-# Backend
-cd backend/LabTrack.CSharp/src/LabTrack.Api
-dotnet build && dotnet run
-
-# Frontend (new terminal)
-cd frontend && npm install && npm run dev
-
-# Compare against v1 (if you have the old commit)
-git diff <v1-commit>..HEAD -- backend/ frontend/ --stat
-```
-
----
-
-🤖 Auto-generated v2 description on 2026-11-18 08:03:49
+🤖 Generated: 2026-11-18 08:22:57
