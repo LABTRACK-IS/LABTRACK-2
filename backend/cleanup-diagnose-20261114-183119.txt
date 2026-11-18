@@ -1,0 +1,49 @@
+﻿========================================================================
+  FULL CLEANUP DIAGNOSTIC — READ-ONLY
+========================================================================
+  Scanned : C:\labtrack\backend\LabTrack.CSharp\src
+  Time    : 2026-11-14 18:31:27
+
+
+[1] BACKUP FILES (.bak-*)
+
+[2] bin/obj FOLDERS (build artifacts)
+
+[3] EMPTY FOLDERS (0 files, excl bin/obj)
+
+[4] TEMP SCRIPTS/LOGS sa src root
+
+[5] ORPHAN .cs FILES (unused code — CAREFUL ANALYSIS)
+  Method: check if class name appears in any OTHER .cs file
+  Excluded: Program.cs, Startup.cs, Migrations/, Tests/, Interfaces (I*.cs) din separately check
+
+  Total .cs files: 433
+
+[6] FOLDERS na magiging EMPTY kung delete ang orphans
+
+========================================================================
+  SUMMARY — pwede i-delete (SAFE)
+========================================================================
+
+  Category                          Count    Size
+  --------------------------------  -----    ------
+  1. .bak-* files                      14    0.03 MB
+  2. bin/obj folders                    8    0 MB
+  3. Empty folders                      8    —
+  4. Temp scripts/logs                 14    —
+  5. ORPHAN .cs files                 143    268.08 KB (⚠ REVIEW NEEDED)
+  6. Folders magiging empty             6    —
+
+  ⚠️  ORPHAN .cs = risky. Baka may reference via:
+      - Reflection / string lookup (e.g. GetType(\
+      - DI container registration sa Program.cs (by string)
+      - EF Core conventions (entity names sa DbSet<>) — checked na
+      - JSON serialization (property types)
+
+  ✅ SAFE to delete: 1, 2, 3, 4 (items 1-4)
+  ⚠️  REVIEW FIRST: 5, 6 (items 5-6)
+
+========================================================================
+
+  Report: C:\labtrack\backend\cleanup-diagnose-20261114-183119.txt
+

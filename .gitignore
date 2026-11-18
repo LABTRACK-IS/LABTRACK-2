@@ -1,0 +1,53 @@
+﻿# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.vscode/launch.json
+*.dll
+*.pdb
+*.cache
+
+# Node
+node_modules/
+dist/
+build/
+.vite/
+*.tsbuildinfo
+.eslintcache
+
+# Secrets
+.env
+.env.*.local
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.local.json
+*.pfx
+*.p12
+*.pem
+
+# Logs
+logs/
+*.log
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# OS/IDE
+.DS_Store
+Thumbs.db
+.idea/
+
+# Backup
+_*backup*/
+_backup*/
+archives/
+temp/
+tmp/
+
+# Examples keep
+!.env.example
+!appsettings.Example.json

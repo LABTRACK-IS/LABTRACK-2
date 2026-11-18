@@ -1,0 +1,64 @@
+﻿
+==============================================================================
+  LABTRACK CLEANUP — SAFE MODE
+==============================================================================
+  Src        : C:\labtrack\backend\LabTrack.CSharp\src
+  Report     : C:\labtrack\backend\cleanup-report-20261114-183610.txt
+  Mode       : EXECUTE
+  Timestamp  : 20261114-183610
+
+  Zipping: C:\labtrack\backend\BACKUPS\labtrack-src-20261114-183610.zip
+  Files to backup: 471
+  Size: 1.49 MB
+    ... 100/471
+    ... 200/471
+    ... 300/471
+    ... 400/471
+  [OK]   Backup: C:\labtrack\backend\BACKUPS\labtrack-src-20261114-183610.zip (0.38 MB)
+
+[2.1] .bak-* files:
+
+[2.2] bin/obj folders:
+
+[2.3] Empty folders (0 files + 0 subfolders):
+  [OK]   wala
+
+[2.4] Temp scripts/logs (root lang):
+
+[2.5] Folder inventory (per top-level project):
+  Project                         Folders Files(.cs)         Size
+  ------------------------------ -------- ---------- ------------
+  LabTrack.Api                         12         80      305.5 KB
+  LabTrack.Application                 68        205        335 KB
+  LabTrack.Domain                       6         54       38.8 KB
+  LabTrack.Infrastructure              24         94      736.2 KB
+
+[2.6] Orphan .cs (STRICT — excludes interfaces/DTOs/commands/handlers/controllers):
+  Total .cs files: 433
+
+[3.1] Delete .bak files...
+
+[3.2] Delete bin/obj folders...
+
+[3.3] Delete empty folders...
+    wala
+
+[3.4] Delete temp scripts/logs...
+  Build: LabTrack.CSharp.slnx
+  Build succeeded.
+      0 Error(s)
+  [OK]   Build SUCCEEDED — cleanup safe
+
+  Category                     Found   Deleted
+  --------------------------   -----   -------
+  .bak-* files                    14         0
+  bin/obj folders                  8         0
+  Empty folders                    0         0
+  Temp scripts/logs               13         0
+
+  ORPHAN .cs (NOT touched)        13
+
+  ⚠️  13 orphan files — REVIEW before any delete
+     (likely false positives from MediatR/DI conventions)
+
+  Cleanup complete. Backup at: C:\labtrack\backend\BACKUPS\labtrack-src-20261114-183610.zip
